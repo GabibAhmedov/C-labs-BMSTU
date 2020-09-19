@@ -1,0 +1,9 @@
+﻿  lab3.2.cpp
+D:\lab\lab3\lab3.2\lab3.2\lab3.2.cpp(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+D:\lab\lab3\lab3.2\lab3.2\lab3.2.cpp(4,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+D:\lab\lab3\lab3.2\lab3.2\lab3.2.cpp(10,29): warning C4101: step: неиспользованная локальная переменная
+D:\lab\lab3\lab3.2\lab3.2\lab3.2.cpp(31,18): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\lab\lab3\lab3.2\lab3.2\lab3.2.cpp(32,16): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\lab\lab3\lab3.2\lab3.2\lab3.2.cpp(40,24): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+D:\lab\lab3\lab3.2\lab3.2\lab3.2.cpp(44,28): warning C4244: =: преобразование "double" в "float", возможна потеря данных
+  lab3.2.vcxproj -> D:\lab\lab3\lab3.2\lab3.2\Debug\lab3.2.exe

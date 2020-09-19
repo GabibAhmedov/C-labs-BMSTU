@@ -1,0 +1,2 @@
+D:\lab\lab3\lab3.2\lab3.2\Debug\lab3.2.exe
+D:\lab\lab3\lab3.2\lab3.2\Debug\lab3.2.pdb
