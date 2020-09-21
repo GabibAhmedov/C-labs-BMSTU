@@ -1,0 +1,13 @@
+*.exe
+*.log
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.vcxproj.user
+*.exe.recipe
+*.ilk
+*.obj
+*.pdb
+*.vcxproj.FileListAbsolute.txt
+*.idb
+*.pdb
