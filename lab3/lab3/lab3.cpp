@@ -5,15 +5,16 @@
 float factorial(float x);
 int main()
 {
-    float accuracy, n, summIpred,summI,nextposled;
-    scanf_s("%f", &accuracy);
-    n = 1;
-    summI = 1 / factorial(n);
+    
+    float accuracy; scanf_s("%f", &accuracy);
+    float  n;  n = 1;
+    float  summI; summI = 1 / factorial(n);
+    float summIpred;
     do
     {
         summIpred = summI;
         n = n + 1;
-        nextposled = 1 / factorial(n);
+        float nextposled; nextposled = 1 / factorial(n);
         summI = summI+nextposled;
         
     } while (summI - summIpred >= accuracy);
@@ -34,6 +35,6 @@ float factorial(float n)
     {
         result = n * factorial(n - 1);
     }
-return result;
+    return result;
 }
 
