@@ -7,6 +7,7 @@ float typeDoWhile(float start, float finish, float step);
 float function(float i);
 float top();
 float bottom();
+float tablebody(float variable, float functionresult);
 
 int main()
 {
@@ -23,7 +24,8 @@ int main()
 	if (finish <= start || amount <= 0)
 	{
 		printf("incorrect value");
-	} else if (type == 1)
+	}
+	else if (type == 1)
 	{
 		typeFor(start, finish, step);
 	}
@@ -44,41 +46,44 @@ int main()
 
 float typeFor(float start, float finish, float step)
 {
+	float functionresult;
 	top();
 	for (float variable = start; variable < finish; variable = variable + step)
 	{
-
-		printf("|    %.3f   |    %.3f   |\n", variable, function(variable));
-		printf("---------------------------\n");
+		functionresult = function(variable);
+		tablebody(variable, functionresult);
 	}
 	return 0;
 }
 
- float typeWhile(float start, float finish, float step)
- {
-	 float variable=start;
+float typeWhile(float start, float finish, float step)
+{
+	float functionresult;
+	float variable = start;
 	top();
 	while (variable < finish)
-	{	printf("|    %.3f   |    %.3f   |\n", variable, function(variable));
-		printf("---------------------------\n");
+	{
+		functionresult = function(variable);
+		tablebody(variable, functionresult);
 		variable = variable + step;
 	}
 	return 0;
-} 
+}
 
- float typeDoWhile(float start, float finish, float step)
- {
-	 float variable = start;
-	 top();
-	 do 
-	 {
-		 printf("|    %.3f   |    %.3f   |\n", variable, function(variable));
-		 printf("---------------------------\n");
-		 variable = variable + step;
-		
-	 } while (variable < finish);
-	 return 0;
- }
+float typeDoWhile(float start, float finish, float step)
+{
+	float functionresult;
+	float variable = start;
+	top();
+	do
+	{
+		functionresult = function(variable);
+		tablebody(variable, functionresult);
+		variable = variable + step;
+
+	} while (variable < finish);
+	return 0;
+}
 
 float top()
 {
@@ -88,6 +93,12 @@ float top()
 	return 0;
 }
 
+float tablebody(float variable, float functionresult)
+{
+	printf("|    %.3f   |    %.3f   |\n", variable, function(variable));
+	printf("---------------------------\n");
+	return 0;
+}
 
 
 float function(float variable)
