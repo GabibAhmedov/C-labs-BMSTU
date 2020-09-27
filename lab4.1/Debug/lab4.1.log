@@ -1,0 +1,6 @@
+﻿  lab4.1.cpp
+D:\lab\lab4\lab4.1\lab4.1\lab4.1.cpp(2,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+D:\lab\lab4\lab4.1\lab4.1\lab4.1.cpp(3,10): warning C4067: непредвиденные лексемы за директивой препроцессора, требуется newline
+D:\lab\lab4\lab4.1\lab4.1\lab4.1.cpp(17,14): warning C4244: =: преобразование "float" в "int", возможна потеря данных
+D:\lab\lab4\lab4.1\lab4.1\lab4.1.cpp(70,9): warning C4244: return: преобразование "int" в "float", возможна потеря данных
+  lab4.1.vcxproj -> D:\lab\lab4\lab4.1\lab4.1\Debug\lab4.1.exe
