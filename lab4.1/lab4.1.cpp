@@ -19,7 +19,7 @@ int main()
 	int lastzero = findLastZero(array, amount);
 
 
-	avg(lastzero, maxi, array);
+	printf("%.3f",avg(lastzero, maxi, array));
 	
 }
 
@@ -68,7 +68,7 @@ float avg(int lastzero, int maxi,float* array)
 		 summ = summ + array[i];
 		 count = count + 1;
 	}
-	printf("%.3f", summ / count);
-	return 0;
+	 
+	return summ / count;
 }
 
