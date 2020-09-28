@@ -1,38 +1,21 @@
 ﻿
 #include <stdio.h>;
 #include <math.h>;
-float array[10000];
-float imputArray(float* array, int amount);
-float findmax(float* array, int amount);
 
+float imputArray(float* array, int amount);
+float findmaxindex(float* array, int amount);
+float findlastzero(float* array, int amount);
 int main()
 {
+	float array[10000];
 	int amount;
 	printf("type number of elements");
 	scanf_s("%d", &amount);
-	float max = -1000000;
-	int maxi = 0;
-	float array[10000];
 	imputArray(array, amount);
-	maxi=findmax(array, amount);
-	/*for (int i = 0; i < amount; i = i + 1)
-	{
-		scanf_s("%f", &array[i]);
-		if (array[i] > max)
-		{
-			max = array[i];
-			maxi = i;
-		}
-	}*/
+	int maxi = findmaxindex(array, amount);
 
-	int lastzero = 0;
-	for (int i = 0; i < amount; i = i + 1)
-	{
-		if (array[i] == 0) 
-		{
-			lastzero = i;
-		}
-	}
+	int lastzero = findlastzero(array, amount);
+
 
 	float summ = 0, count = 0, avg = 0;
 	for (int i = lastzero; i <= maxi; i = i + 1)
@@ -55,9 +38,9 @@ float imputArray(float *array,int amount)
 	return 0;
 }
 
-float findmax(float* array, int amount)
+float findmaxindex(float* array, int amount)
 {
-	float max = -1000000;
+	float max = array[0];
 	int maxi = 0;
 	for (int i = 0; i < amount; i = i + 1)
 	{
@@ -68,4 +51,16 @@ float findmax(float* array, int amount)
 		}
 	}
 	return maxi;
+}
+float findlastzero(float* array, int amount)
+{
+	int lastzero = 0;
+	for (int i = 0; i < amount; i = i + 1)
+	{
+		if (array[i] == 0)
+		{
+			lastzero = i;
+		}
+	}
+	return lastzero;
 }
