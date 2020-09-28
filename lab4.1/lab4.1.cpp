@@ -3,8 +3,10 @@
 #include <math.h>;
 
 float imputArray(float* array, int amount);
-float findmaxindex(float* array, int amount);
-float findlastzero(float* array, int amount);
+float findMaxIndex(float* array, int amount);
+float findLastZero(float* array, int amount);
+float avg(float avg, float count);
+
 int main()
 {
 	float array[10000];
@@ -12,20 +14,19 @@ int main()
 	printf("type number of elements");
 	scanf_s("%d", &amount);
 	imputArray(array, amount);
-	int maxi = findmaxindex(array, amount);
+	int maxi = findMaxIndex(array, amount);
 
-	int lastzero = findlastzero(array, amount);
+	int lastzero = findLastZero(array, amount);
 
 
-	float summ = 0, count = 0, avg = 0;
+	float summ = 0, count = 0;
 	for (int i = lastzero; i <= maxi; i = i + 1)
 	{
 		summ = summ + array[i];
 		count = count + 1;
 	}
 
-	avg = summ / count;
-	printf("%.3f", avg);
+	printf("%.3f", avg(summ,count));
 	
 }
 
@@ -38,7 +39,7 @@ float imputArray(float *array,int amount)
 	return 0;
 }
 
-float findmaxindex(float* array, int amount)
+float findMaxIndex(float* array, int amount)
 {
 	float max = array[0];
 	int maxi = 0;
@@ -52,7 +53,7 @@ float findmaxindex(float* array, int amount)
 	}
 	return maxi;
 }
-float findlastzero(float* array, int amount)
+float findLastZero(float* array, int amount)
 {
 	int lastzero = 0;
 	for (int i = 0; i < amount; i = i + 1)
@@ -63,4 +64,8 @@ float findlastzero(float* array, int amount)
 		}
 	}
 	return lastzero;
+}
+float avg(float summ, float count)
+{
+	return summ / count;
 }
