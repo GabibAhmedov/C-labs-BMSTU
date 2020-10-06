@@ -1,2 +1,0 @@
-D:\lab\lab2\gabib2\ConsoleApplication1\Debug\ConsoleApplication1.exe
-D:\lab\lab2\gabib2\ConsoleApplication1\Debug\ConsoleApplication1.pdb

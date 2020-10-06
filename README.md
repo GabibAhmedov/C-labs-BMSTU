@@ -1,2 +1,0 @@
-# gabiblabs
-reposotory for labs
