@@ -7,6 +7,8 @@ int** allocate(int strings, int columns);
 void inputMatrix(int** matrix, int strings, int columns);
 void outputMatrix(int** matrix, int strings, int columns);
 int snakeSort(int** matrix, int* tempArray, int strings, int columns);
+void evenStrings(int** matrix, int strings, int columns, int i, int j);
+void oddStrings(int** matrix, int strings, int columns, int i, int j);
 
 int main()
 {
@@ -44,51 +46,11 @@ int snakeSort(int** matrix, int* tempArray, int strings, int columns)
 			{	
 				if (i % 2 == 0)
 				{
-					if (j != columns - 1)
-					{
-						if (matrix[i][j + 1] < matrix[i][j])
-						{
-							int tmp = matrix[i][j + 1];
-							matrix[i][j + 1] = matrix[i][j];
-							matrix[i][j] = tmp;
-						}
-					}
-					else
-					{
-						if (i != strings - 1)
-						{
-							if ((matrix[i + 1][columns-1] < matrix[i][j]))
-							{
-								int tmp = matrix[i + 1][columns - 1];
-								matrix[i + 1][columns - 1] = matrix[i][j];
-								matrix[i][j] = tmp;
-							}
-						}
-					}
+					evenStrings(matrix, strings, columns, i, j);
 				}
 				else 
 				{
-					if (j != 0)
-					{
-						if (matrix[i][columns-j-1] < matrix[i][columns-j])
-						{
-							int tmp = matrix[i][columns - j - 1];
-							matrix[i][columns - j - 1] = matrix[i][columns - j];
-							matrix[i][columns - j] = tmp;
-						}
-					}
-					else
-					{
-						if (i != strings - 1)
-						{
-							if ((matrix[i + 1][0] < matrix[i][j]))
-							{
-								int tmp = matrix[i + 1][0];
-								matrix[i + 1][0] = matrix[i][j];
-								matrix[i][j] = tmp;
-							}
-						}
-					}
+					oddStrings(matrix, strings, columns, i, j);
 				}
 			}
 		}
@@ -96,7 +58,54 @@ int snakeSort(int** matrix, int* tempArray, int strings, int columns)
 	return 0;
 }
 
-
+void evenStrings(int** matrix,int strings,int columns,int i, int j)
+{
+	if (j != columns - 1)
+	{
+		if (matrix[i][j + 1] < matrix[i][j])
+		{
+			int tmp = matrix[i][j + 1];
+			matrix[i][j + 1] = matrix[i][j];
+			matrix[i][j] = tmp;
+		}
+	}
+	else
+	{
+		if (i != strings - 1)
+		{
+			if ((matrix[i + 1][columns - 1] < matrix[i][j]))
+			{
+				int tmp = matrix[i + 1][columns - 1];
+				matrix[i + 1][columns - 1] = matrix[i][j];
+				matrix[i][j] = tmp;
+			}
+		}
+	}
+}
+void oddStrings(int** matrix, int strings, int columns, int i, int j)
+{
+	if (j != 0)
+	{
+		if (matrix[i][columns - j - 1] < matrix[i][columns - j])
+		{
+			int tmp = matrix[i][columns - j - 1];
+			matrix[i][columns - j - 1] = matrix[i][columns - j];
+			matrix[i][columns - j] = tmp;
+		}
+	}
+	else
+	{
+		if (i != strings - 1)
+		{
+			if ((matrix[i + 1][0] < matrix[i][j]))
+			{
+				int tmp = matrix[i + 1][0];
+				matrix[i + 1][0] = matrix[i][j];
+				matrix[i][j] = tmp;
+			}
+		}
+	}
+}
 
 void outputMatrix(int** matrix, int strings, int columns)
 {
