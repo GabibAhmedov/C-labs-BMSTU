@@ -7,6 +7,10 @@ int** allocate(int strings, int columns);
 void inputMatrix(int** matrix, int strings, int columns);
 void outputMatrix(int** matrix, int strings, int columns);
 int spiralSort(int** matrix, int* tempArray, int strings, int columns);
+void moveToRightSide(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
+void moveToBottom(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
+void moveToLeftSide(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
+void moveToTop(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
 
 int main()
 {
@@ -46,85 +50,19 @@ int spiralSort(int** matrix, int* tempArray, int strings, int columns)
 		{
 			for (; j < countC; j++)
 			{
-				if (j != countC - 1)
-				{
-					if (matrix[i][j + 1] < matrix[i][j])
-					{
-						int tmp = matrix[i][j + 1];
-						matrix[i][j + 1] = matrix[i][j];
-						matrix[i][j] = tmp;
-					}
-				}
-				else
-				{
-
-					if (i != countS - 1) 
-{
-						if ((matrix[i + 1][j] < matrix[i][j]))
-						{
-							int tmp = matrix[i + 1][j];
-							matrix[i + 1][j] = matrix[i][j];
-							matrix[i][j] = tmp;
-						}
-					}
-
-				}
+				moveToRightSide(matrix, strings, columns, i, j,countC);
 			}
 			j--;
 			i++;
 			for (; i < countS; i++)
 			{
-				if (i != countS - 1)
-				{
-					if (matrix[i + 1][j] < matrix[i][j])
-					{
-						int tmp = matrix[i + 1][j];
-						matrix[i + 1][j] = matrix[i][j];
-						matrix[i][j] = tmp;
-					}
-				}
-				else
-				{
-
-					if (j != columns - countC) {
-
-						if ((matrix[i][j - 1] < matrix[i][j]))
-						{
-							int tmp = matrix[i][j - 1];
-							matrix[i][j - 1] = matrix[i][j];
-							matrix[i][j] = tmp;
-						}
-					}
-
-				}
+				moveToBottom(matrix, strings, columns, i, j,countS);
 			}
 			i--;
 			j--;
 			for (; j >= columns - countC; j--)
 			{
-				if (j != columns - countC)
-				{
-					if (matrix[i][j-1] < matrix[i][j])
-					{
-						int tmp = matrix[i][j - 1];
-						matrix[i][j - 1] = matrix[i][j];
-						matrix[i][j] = tmp;
-					}
-				}
-				else
-				{
-					if (i != strings - countS)
-					{
-
-						if ((matrix[i - 1][j] < matrix[i][j]))
-						{
-							int tmp = matrix[i - 1][j];
-							matrix[i - 1][j] = matrix[i][j];
-							matrix[i][j] = tmp;
-						}
-					}
-
-				}
+				moveToLeftSide(matrix, strings, columns, i, j,countC);
 			}
 
 			j++;
@@ -132,32 +70,9 @@ int spiralSort(int** matrix, int* tempArray, int strings, int columns)
 			countS--;
 			for (; i >= strings - countS; i--)
 			{
-				if (i != strings - countS)
-				{
-					if (matrix[i - 1][j] < matrix[i][j])
-					{
-						int tmp = matrix[i - 1][j];
-						matrix[i - 1][j] = matrix[i][j];
-						matrix[i][j] = tmp;
-					}
-				}
-				else
-				{
-
-					if (j != countC - 1) 
-					{
-
-
-						if ((matrix[i][j + 1] < matrix[i][j]))
-						{
-							int tmp = matrix[i][j + 1];
-							matrix[i][j + 1] = matrix[i][j];
-							matrix[i][j] = tmp;
-						}
-					}
-
-				}
+				moveToTop(matrix, strings, columns, i, j,countS);
 			}
+			
 			i++;
 			j++;
 			countC--;
@@ -168,6 +83,116 @@ int spiralSort(int** matrix, int* tempArray, int strings, int columns)
 }
 
 
+void moveToRightSide(int** matrix, int strings, int columns, int i, int j, int countS, int countC)
+{
+	if (j != countC - 1)
+	{
+		if (matrix[i][j + 1] < matrix[i][j])
+		{
+			int tmp = matrix[i][j + 1];
+			matrix[i][j + 1] = matrix[i][j];
+			matrix[i][j] = tmp;
+		}
+	}
+	else
+	{
+
+		if (i != countS - 1)
+		{
+			if ((matrix[i + 1][j] < matrix[i][j]))
+			{
+				int tmp = matrix[i + 1][j];
+				matrix[i + 1][j] = matrix[i][j];
+				matrix[i][j] = tmp;
+			}
+		}
+
+	}
+}
+void moveToBottom(int** matrix, int strings, int columns, int i, int j, int countS, int countC)
+{
+	
+		if (i != countS - 1)
+		{
+			if (matrix[i + 1][j] < matrix[i][j])
+			{
+				int tmp = matrix[i + 1][j];
+				matrix[i + 1][j] = matrix[i][j];
+				matrix[i][j] = tmp;
+			}
+		}
+		else
+		{
+
+			if (j != columns - countC) {
+
+				if ((matrix[i][j - 1] < matrix[i][j]))
+				{
+					int tmp = matrix[i][j - 1];
+					matrix[i][j - 1] = matrix[i][j];
+					matrix[i][j] = tmp;
+				}
+			}
+
+		}
+	
+}
+void moveToLeftSide(int** matrix, int strings, int columns, int i, int j, int countS, int countC)
+{
+	if (j != columns - countC)
+	{
+		if (matrix[i][j - 1] < matrix[i][j])
+		{
+			int tmp = matrix[i][j - 1];
+			matrix[i][j - 1] = matrix[i][j];
+			matrix[i][j] = tmp;
+		}
+	}
+	else
+	{
+		if (i != strings - countS)
+		{
+
+			if ((matrix[i - 1][j] < matrix[i][j]))
+			{
+				int tmp = matrix[i - 1][j];
+				matrix[i - 1][j] = matrix[i][j];
+				matrix[i][j] = tmp;
+			}
+		}
+
+	}
+}
+void moveToTop(int** matrix, int strings, int columns, int i, int j,int countS,int countC)
+{
+	
+			if (i != strings - countS)
+			{
+				if (matrix[i - 1][j] < matrix[i][j])
+				{
+					int tmp = matrix[i - 1][j];
+					matrix[i - 1][j] = matrix[i][j];
+					matrix[i][j] = tmp;
+				}
+			}
+			else
+			{
+
+				if (j != countC - 1)
+				{
+
+
+					if ((matrix[i][j + 1] < matrix[i][j]))
+					{
+						int tmp = matrix[i][j + 1];
+						matrix[i][j + 1] = matrix[i][j];
+						matrix[i][j] = tmp;
+					}
+				}
+
+			}
+	
+}
 
 void outputMatrix(int** matrix, int strings, int columns)
 {
