@@ -7,6 +7,10 @@ int** allocate(int strings, int columns);
 void inputMatrix(int** matrix, int strings, int columns);
 void outputMatrix(int** matrix, int strings, int columns);
 void swapMinMax(int** matrix, int strings, int columns);
+void tallMatrix(int** matrix, int strings,int  columns, int mini, int maxi);
+void longMatrix(int** matrix, int strings, int columns, int mini, int maxi);
+void squaredMatrix(int** matrix, int strings, int columns, int mini, int maxi);
+
 
 int main()
 {
@@ -55,35 +59,51 @@ void swapMinMax(int** matrix, int strings, int columns)
 			}
 		}
 	}
-	if (strings < columns) {
-		int tmpMax = max;
-		matrix[maxi][maxj] = matrix[strings - 1 - maxj][columns - 1 - maxi - square];
-		matrix[strings - 1 - maxj][columns - 1 - maxi - square] = tmpMax;
-
-		int tmpMin = min;
-		matrix[mini][minj] = matrix[strings - 1 - minj][columns - 1 - mini - square];
-		matrix[strings - 1 - minj][columns - 1 - mini - square] = tmpMin;
+	if (strings < columns) 
+	{
+		longMatrix(matrix, strings, columns, mini,  maxi);
 	}
 	else if (strings > columns)
 	{
-		int tmpMax = max;
-		matrix[maxi][maxj] = matrix[strings - 1 - maxj][columns - 1 - maxi + square];
-		matrix[strings - 1 - maxj][columns - 1 - maxi + square] = tmpMax;
-
-		int tmpMin = min;
-		matrix[mini][minj] = matrix[strings - 1 - minj][columns - 1 - mini + square];
-		matrix[strings - 1 - minj][columns - 1 - mini + square] = tmpMin;
+		tallMatrix(matrix, strings, columns, mini,maxi);
 	}
 	else
 	{
-		int tmpMax = max;
-		matrix[maxi][maxj] = matrix[strings - 1 - maxj][strings - 1 - maxi];
-		matrix[strings - 1 - maxj][strings - 1 - maxi] = tmpMax;
-
-		int tmpMin = min;
-		matrix[mini][minj] = matrix[strings - 1 - minj][strings - 1 - mini];
-		matrix[strings - 1 - minj][strings - 1 - mini] = tmpMin;
+		squaredMatrix(matrix, strings, columns, mini, maxi);
 	}
+}
+
+
+
+void tallMatrix(int** matrix, int strings,int columns, int mini, int maxi)
+{
+	int tmpMax = max;
+	matrix[maxi][maxj] = matrix[strings - 1 - maxj][columns - 1 - maxi + square];
+	matrix[strings - 1 - maxj][columns - 1 - maxi + square] = tmpMax;
+
+	int tmpMin = min;
+	matrix[mini][minj] = matrix[strings - 1 - minj][columns - 1 - mini + square];
+	matrix[strings - 1 - minj][columns - 1 - mini + square] = tmpMin;
+}
+void longMatrix(int** matrix, int strings, int columns, int mini, int maxi)
+{
+	int tmpMax = max;
+	matrix[maxi][maxj] = matrix[strings - 1 - maxj][columns - 1 - maxi - square];
+	matrix[strings - 1 - maxj][columns - 1 - maxi - square] = tmpMax;
+
+	int tmpMin = min;
+	matrix[mini][minj] = matrix[strings - 1 - minj][columns - 1 - mini - square];
+	matrix[strings - 1 - minj][columns - 1 - mini - square] = tmpMin;
+}
+void squaredMatrix(int** matrix, int strings, int columns,int mini, int maxi)
+{
+	int tmpMax = max;
+	matrix[maxi][maxj] = matrix[strings - 1 - maxj][strings - 1 - maxi];
+	matrix[strings - 1 - maxj][strings - 1 - maxi] = tmpMax;
+
+	int tmpMin = min;
+	matrix[mini][minj] = matrix[strings - 1 - minj][strings - 1 - mini];
+	matrix[strings - 1 - minj][strings - 1 - mini] = tmpMin;
 }
 
 void outputMatrix(int** matrix, int strings, int columns)
