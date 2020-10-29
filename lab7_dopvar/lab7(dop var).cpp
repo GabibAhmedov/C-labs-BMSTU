@@ -11,6 +11,7 @@ void moveToRightSide(int** matrix, int strings, int columns, int i, int j, int c
 void moveToBottom(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
 void moveToLeftSide(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
 void moveToTop(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
+void swapElements(int** matrix, int index1, int index2);
 
 int main()
 {
@@ -87,93 +88,67 @@ void moveToRightSide(int** matrix, int strings, int columns, int i, int j, int c
 {
 	if (j != countC - 1)
 	{
-		if (matrix[i][j + 1] < matrix[i][j])
-		{
-			int tmp = matrix[i][j + 1];
-			matrix[i][j + 1] = matrix[i][j];
-			matrix[i][j] = tmp;
-		}
+		swapElements(matrix, i, j,i, j+1);
+
 	}
 	else
 	{
 
 		if (i != countS - 1)
 		{
-			if ((matrix[i + 1][j] < matrix[i][j]))
-			{
-				int tmp = matrix[i + 1][j];
-				matrix[i + 1][j] = matrix[i][j];
-				matrix[i][j] = tmp;
-			}
+			swapElements(matrix, i, j, i+1, j);
+
 		}
 
 	}
 }
+
 void moveToBottom(int** matrix, int strings, int columns, int i, int j, int countS, int countC)
 {
 	
 		if (i != countS - 1)
 		{
-			if (matrix[i + 1][j] < matrix[i][j])
-			{
-				int tmp = matrix[i + 1][j];
-				matrix[i + 1][j] = matrix[i][j];
-				matrix[i][j] = tmp;
-			}
+			swapElements(matrix, i, j, i + 1, j);
+	
 		}
 		else
 		{
 
-			if (j != columns - countC) {
-
-				if ((matrix[i][j - 1] < matrix[i][j]))
-				{
-					int tmp = matrix[i][j - 1];
-					matrix[i][j - 1] = matrix[i][j];
-					matrix[i][j] = tmp;
-				}
+			if (j != columns - countC)
+			{
+				swapElements(matrix, i, j, i, j - 1);
 			}
+	
 
 		}
 	
 }
+
 void moveToLeftSide(int** matrix, int strings, int columns, int i, int j, int countS, int countC)
 {
 	if (j != columns - countC)
 	{
-		if (matrix[i][j - 1] < matrix[i][j])
-		{
-			int tmp = matrix[i][j - 1];
-			matrix[i][j - 1] = matrix[i][j];
-			matrix[i][j] = tmp;
-		}
+		swapElements(matrix, i, j, i, j - 1);
+
 	}
 	else
 	{
 		if (i != strings - countS)
 		{
-
-			if ((matrix[i - 1][j] < matrix[i][j]))
-			{
-				int tmp = matrix[i - 1][j];
-				matrix[i - 1][j] = matrix[i][j];
-				matrix[i][j] = tmp;
-			}
+			swapElements(matrix, i, j, i-1, j);
+		
 		}
 
 	}
 }
-void moveToTop(int** matrix, int strings, int columns, int i, int j,int countS,int countC)
+
+void moveToTop(int** matrix, int strings, int columns, int i, int j, int countS, int countC)
 {
-	
+
 			if (i != strings - countS)
 			{
-				if (matrix[i - 1][j] < matrix[i][j])
-				{
-					int tmp = matrix[i - 1][j];
-					matrix[i - 1][j] = matrix[i][j];
-					matrix[i][j] = tmp;
-				}
+				swapElements(matrix, i, j, i - 1, j);
+		
 			}
 			else
 			{
@@ -181,13 +156,8 @@ void moveToTop(int** matrix, int strings, int columns, int i, int j,int countS,i
 				if (j != countC - 1)
 				{
 
-
-					if ((matrix[i][j + 1] < matrix[i][j]))
-					{
-						int tmp = matrix[i][j + 1];
-						matrix[i][j + 1] = matrix[i][j];
-						matrix[i][j] = tmp;
-					}
+					swapElements(matrix, i, j, i, j+1);
+		
 				}
 
 			}
@@ -215,5 +185,15 @@ void inputMatrix(int** matrix, int strings, int columns)
 			scanf_s("%d", &matrix[i][j]);
 		}
 		printf("\n");
+	}
+}
+
+void swapElements(int** matrix, int i, int j, int iAlt, int jAlt)
+{
+	if (matrix[iAlt][jAlt] < matrix[i][j])
+	{
+		int tmp = matrix[iAlt][jAlt];
+		matrix[iAlt][jAlt] = matrix[i][j];
+		matrix[i][j] = tmp;
 	}
 }
