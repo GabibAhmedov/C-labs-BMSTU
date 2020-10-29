@@ -11,7 +11,7 @@ void moveToRightSide(int** matrix, int strings, int columns, int i, int j, int c
 void moveToBottom(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
 void moveToLeftSide(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
 void moveToTop(int** matrix, int strings, int columns, int i, int j, int countS, int countC);
-void swapElements(int** matrix, int index1, int index2);
+void swapElements(int** matrix, int i, int j,int iAlt,int jAlt);
 
 int main()
 {
